@@ -2,8 +2,8 @@
     box-shadow: 0 50px 50px 0 rgba(0, 0, 0, 0.2);
 }
 .img-card {
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 180px;
     border-radius: 10px 10px 0 0;
 }
 .text-card {
@@ -19,4 +19,9 @@
     transition: 0.6s;
     text-align: center;
     margin: 10px;
+}
+
+.icon-card {
+    width: 200px;
+    height: 21px;
 }
