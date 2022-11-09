@@ -72,8 +72,13 @@ class App extends Component {
                     />
                     <Route
                         exact
-                        path="/catalog"
-                        render={() => <Catalog catalog={this.state.catalog} />}
+                        path="/catalog/:name"
+                        render={(match) => (
+                            <Catalog
+                                catalog={this.state.catalog}
+                                match={match}
+                            />
+                        )}
                     />
                 </div>
             </Router>
