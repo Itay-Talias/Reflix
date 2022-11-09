@@ -9,7 +9,7 @@ class Users extends Component {
             <div id="users">
                 {this.props.users.map((u, i) => (
                     <Link to={`/catalog/${u}`}>
-                        <User name={u} key={i}></User>
+                        <User name={u} number={i} key={i}></User>
                     </Link>
                 ))}
             </div>
