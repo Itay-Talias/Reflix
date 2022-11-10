@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../style/MovieCard.css";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import Popup from "reactjs-popup";
+import { Link } from "react-router-dom";
 import "reactjs-popup/dist/index.css";
 
 class MovieCard extends Component {
@@ -11,11 +12,13 @@ class MovieCard extends Component {
     render() {
         return (
             <div className="movie-card">
-                <img
-                    className="img-card"
-                    src={this.props.movie.img}
-                    alt="movie-img"
-                ></img>
+                <Link to={`/catalog/${this.props.user}/${this.props.movie.id}`}>
+                    <img
+                        className="img-card"
+                        src={this.props.movie.img}
+                        alt="movie-img"
+                    ></img>
+                </Link>
                 <div className="icon-card" onClick={this.rentMovie}>
                     {this.props.movie.isRented ? (
                         <AiOutlineMinusCircle />
@@ -23,9 +26,9 @@ class MovieCard extends Component {
                         <AiOutlinePlusCircle />
                     )}
                 </div>
-                <div class="text-card">
+                <div className="text-card">
                     <h4>{this.props.movie.title}</h4>
-                    <p>{this.props.movie.year}</p>
+                    <h6>{this.props.movie.year}</h6>
                 </div>
                 <Popup trigger={<button> Info</button>}>
                     <div>{this.props.movie.descrShort}</div>
