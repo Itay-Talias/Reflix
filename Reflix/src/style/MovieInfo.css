@@ -1,10 +1,12 @@
 .movie-info {
     width: 630px;
     height: 480px;
-    margin: 20px;
     background-color: rgba(49, 49, 49, 0.8);
     border-radius: 20px;
-    /* position: fixed; */
+    text-align: center;
+    display: inline-block;
+    margin-left: 30%;
+    margin-top: 5%;
 }
 .img-info {
     margin: 10px;
