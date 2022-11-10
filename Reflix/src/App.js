@@ -113,6 +113,14 @@ class App extends Component {
             ],
         };
     }
+    rentMovie = (movieId) => {
+        let newCatalog = [...this.state.catalog];
+        newCatalog.find((m) => m.id === movieId).isRented = !newCatalog.find(
+            (m) => m.id === movieId
+        ).isRented;
+        this.setState({ catalog: newCatalog });
+    };
+
     render() {
         return (
             <Router>
@@ -129,6 +137,7 @@ class App extends Component {
                         path="/catalog/:name"
                         render={(match) => (
                             <Catalog
+                                rentMovieFunc={this.rentMovie}
                                 catalog={this.state.catalog}
                                 match={match}
                             />

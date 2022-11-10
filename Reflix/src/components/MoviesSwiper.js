@@ -6,11 +6,16 @@ import "swiper/css";
 
 class MovieSwiper extends Component {
     render() {
+        const rentMovieFunc = this.props.rentMovieFunc;
         return (
             <Swiper slidesPerView={7}>
                 {this.props.movies.map((m, i) => (
                     <SwiperSlide>
-                        <MovieCard key={i} movie={m}></MovieCard>
+                        <MovieCard
+                            rentMovieFunc={rentMovieFunc}
+                            key={i}
+                            movie={m}
+                        ></MovieCard>
                     </SwiperSlide>
                 ))}
             </Swiper>

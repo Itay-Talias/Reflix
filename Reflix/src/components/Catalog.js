@@ -20,6 +20,7 @@ class Catalog extends Component {
                         <hr></hr>
                         <h1 className="title">Rented:</h1>
                         <MovieSwiper
+                            rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getRentMovies()}
                         ></MovieSwiper>
                     </div>
@@ -29,6 +30,7 @@ class Catalog extends Component {
                         <hr></hr>
                         <h1 className="title">Catalog:</h1>
                         <MovieSwiper
+                            rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getUnrentMovies()}
                         ></MovieSwiper>
                     </div>

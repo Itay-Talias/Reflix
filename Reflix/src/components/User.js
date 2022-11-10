@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "../style/User.css";
 
 class User extends Component {
-    constructor() {
-        super();
-    }
     numberToString(num) {
         let dict = {
             0: "zero",

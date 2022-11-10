@@ -5,6 +5,9 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 class MovieCard extends Component {
+    rentMovie = () => {
+        this.props.rentMovieFunc(this.props.movie.id);
+    };
     render() {
         return (
             <div className="movie-card">
@@ -13,7 +16,7 @@ class MovieCard extends Component {
                     src={this.props.movie.img}
                     alt="movie-img"
                 ></img>
-                <div className="icon-card">
+                <div className="icon-card" onClick={this.rentMovie}>
                     {this.props.movie.isRented ? (
                         <AiOutlineMinusCircle />
                     ) : (
