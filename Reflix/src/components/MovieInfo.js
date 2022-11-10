@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import MovieCard from "./MovieCard";
+import "../style/MovieInfo.css";
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 
 class MovieInfo extends Component {
     findMovie = () => {
@@ -8,14 +9,14 @@ class MovieInfo extends Component {
         return movie;
     };
     render() {
-        const rentMovieFunc = this.props.rentMovieFunc;
         const movie = this.findMovie();
         return (
-            <MovieCard
-                rentMovieFunc={rentMovieFunc}
-                key={movie.id}
-                movie={movie}
-            ></MovieCard>
+            <div className="movie-info">
+                <p className="desc-info">{movie.descrShort}</p>
+                <img className="img-info" src={movie.img} alt="movie-img"></img>
+                <h2 className="text-info">{movie.title}</h2>
+                <h3 className="text-info">{movie.year}</h3>
+            </div>
         );
     }
 }
