@@ -10,7 +10,12 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            users: ["ITAY", "LOTAN", "LIAM", "TAL"],
+            users: [
+                { name: "ITAY", budget: 900 },
+                { name: "DEKEL", budget: 900 },
+                { name: "YAGEL", budget: 900 },
+                { name: "OHAD", budget: 900 },
+            ],
             catalog: [
                 {
                     id: 0,
@@ -141,6 +146,7 @@ class App extends Component {
                                 rentMovieFunc={this.rentMovie}
                                 catalog={this.state.catalog}
                                 match={match}
+                                users={this.state.users}
                             />
                         )}
                     />
@@ -148,11 +154,18 @@ class App extends Component {
                         exact
                         path="/catalog/:name/:id"
                         render={({ match }) => (
-                            <MovieInfo
-                                rentMovieFunc={this.rentMovie}
-                                catalog={this.state.catalog}
-                                match={match}
-                            />
+                            <div>
+                                <MovieInfo
+                                    rentMovieFunc={this.rentMovie}
+                                    catalog={this.state.catalog}
+                                    match={match}
+                                />
+                                {/* <Catalog
+                                    rentMovieFunc={this.rentMovie}
+                                    catalog={this.state.catalog}
+                                    match={match}
+                                /> */}
+                            </div>
                         )}
                     />
                 </div>

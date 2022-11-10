@@ -8,8 +8,8 @@ class Users extends Component {
         return (
             <div id="users">
                 {this.props.users.map((u, i) => (
-                    <Link to={`/catalog/${u}`}>
-                        <User name={u} number={i} key={i}></User>
+                    <Link to={`/catalog/${u.name}`}>
+                        <User name={u.name} number={i} key={i}></User>
                     </Link>
                 ))}
             </div>
