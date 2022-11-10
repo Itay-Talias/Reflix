@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import MenuBar from "./components/MenuBar";
 import Home from "./components/Home";
 import Catalog from "./components/Catalog";
+import MovieInfo from "./components/MovieInfo";
 
 class App extends Component {
     constructor() {
@@ -135,8 +136,19 @@ class App extends Component {
                     <Route
                         exact
                         path="/catalog/:name"
-                        render={(match) => (
+                        render={({ match }) => (
                             <Catalog
+                                rentMovieFunc={this.rentMovie}
+                                catalog={this.state.catalog}
+                                match={match}
+                            />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path="/catalog/:name/:id"
+                        render={({ match }) => (
+                            <MovieInfo
                                 rentMovieFunc={this.rentMovie}
                                 catalog={this.state.catalog}
                                 match={match}

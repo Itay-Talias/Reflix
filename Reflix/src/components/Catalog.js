@@ -13,13 +13,14 @@ class Catalog extends Component {
         return (
             <div id="catalog">
                 <h1 id="title-catalog">
-                    WELCOME BACK {this.props.match.match.params.name}!!
+                    WELCOME BACK {this.props.match.params.name}!!
                 </h1>
                 {this.getRentMovies().length !== 0 ? (
                     <div>
                         <hr></hr>
                         <h1 className="title">Rented:</h1>
                         <MovieSwiper
+                            user={this.props.match.params.name}
                             rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getRentMovies()}
                         ></MovieSwiper>
@@ -30,6 +31,7 @@ class Catalog extends Component {
                         <hr></hr>
                         <h1 className="title">Catalog:</h1>
                         <MovieSwiper
+                            user={this.props.match.params.name}
                             rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getUnrentMovies()}
                         ></MovieSwiper>
