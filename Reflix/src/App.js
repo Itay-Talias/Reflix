@@ -100,7 +100,7 @@ class App extends Component {
                 },
                 {
                     id: 9,
-                    isRented: true,
+                    isRented: false,
                     title: "Thor",
                     year: 2022,
                     img: "https://cdn.moviestillsdb.com/storage/posters/43/10648342_150.jpg",
@@ -109,7 +109,7 @@ class App extends Component {
                 },
                 {
                     id: 10,
-                    isRented: true,
+                    isRented: false,
                     title: "Gun Crazy",
                     year: 1950,
                     img: "https://cdn.moviestvnetwork.com/iKtQ2-1550175292-1919-movie-GunCrazy_MOVIES_800x1187.jpg",
@@ -127,10 +127,15 @@ class App extends Component {
         this.setState({ catalog: newCatalog });
     };
     updateBudget = (userName, price) => {
+        let updatedBudget = false;
         let newUsers = [...this.state.users];
-        newUsers.find((u) => u.name === userName).budget =
-            newUsers.find((u) => u.name === userName).budget + price;
-        this.setState({ users: newUsers });
+        const currUser = newUsers.find((u) => u.name === userName);
+        if (currUser.budget + price >= 0) {
+            currUser.budget = currUser.budget + price;
+            this.setState({ users: newUsers });
+            updatedBudget = true;
+        }
+        return updatedBudget;
     };
 
     render() {
@@ -167,11 +172,6 @@ class App extends Component {
                                     catalog={this.state.catalog}
                                     match={match}
                                 />
-                                {/* <Catalog
-                                    rentMovieFunc={this.rentMovie}
-                                    catalog={this.state.catalog}
-                                    match={match}
-                                /> */}
                             </div>
                         )}
                     />

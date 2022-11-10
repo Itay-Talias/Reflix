@@ -10,9 +10,16 @@ const UNRENR_PRICE = -300;
 
 class MovieCard extends Component {
     rentMovie = () => {
-        this.props.rentMovieFunc(this.props.movie.id);
-        const price = this.props.movie.isRented ? UNRENR_PRICE : RENR_PRICE;
-        this.props.updateBudgetFunc(this.props.user, price);
+        const price = this.props.movie.isRented ? RENR_PRICE : UNRENR_PRICE;
+        const updatedBudget = this.props.updateBudgetFunc(
+            this.props.user,
+            price
+        );
+        if (updatedBudget) {
+            this.props.rentMovieFunc(this.props.movie.id);
+        } else {
+            alert("You don't have enough budget");
+        }
     };
     render() {
         return (
