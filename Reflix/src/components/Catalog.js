@@ -28,12 +28,13 @@ class Catalog extends Component {
             .filter((m) => m.isRented !== true);
     };
     render() {
+        const currentUser = this.props.users.find(
+            (u) => u.name === this.props.match.params.name
+        );
         return (
             <div id="catalog">
-                <h3 className="budget">{`Budget: $${this.props.users[0].budget}`}</h3>
-                <h1 id="title-catalog">
-                    WELCOME BACK {this.props.match.params.name}!!
-                </h1>
+                <h3 className="budget">{`Budget: $${currentUser.budget}`}</h3>
+                <h1 id="title-catalog">WELCOME BACK {currentUser.name}!!</h1>
                 <SearchBar
                     text={this.state.textFilter}
                     setTextFilter={this.filterMovies}
@@ -43,10 +44,11 @@ class Catalog extends Component {
                         <hr></hr>
                         <h1 className="title">Rented:</h1>
                         <MovieSwiper
-                            user={this.props.match.params.name}
+                            user={currentUser.name}
                             rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getRentMovies()}
                             key="rented-swiper"
+                            updateBudgetFunc={this.props.updateBudgetFunc}
                         ></MovieSwiper>
                     </div>
                 ) : null}
@@ -55,10 +57,11 @@ class Catalog extends Component {
                         <hr></hr>
                         <h1 className="title">Catalog:</h1>
                         <MovieSwiper
-                            user={this.props.match.params.name}
+                            user={currentUser.name}
                             rentMovieFunc={this.props.rentMovieFunc}
                             movies={this.getUnrentMovies()}
                             key="unrented-swiper"
+                            updateBudgetFunc={this.props.updateBudgetFunc}
                         ></MovieSwiper>
                     </div>
                 ) : null}

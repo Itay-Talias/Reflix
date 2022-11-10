@@ -5,9 +5,14 @@ import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import "reactjs-popup/dist/index.css";
 
+const RENR_PRICE = 300;
+const UNRENR_PRICE = -300;
+
 class MovieCard extends Component {
     rentMovie = () => {
         this.props.rentMovieFunc(this.props.movie.id);
+        const price = this.props.movie.isRented ? UNRENR_PRICE : RENR_PRICE;
+        this.props.updateBudgetFunc(this.props.user, price);
     };
     render() {
         return (

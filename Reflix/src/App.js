@@ -126,6 +126,12 @@ class App extends Component {
         ).isRented;
         this.setState({ catalog: newCatalog });
     };
+    updateBudget = (userName, price) => {
+        let newUsers = [...this.state.users];
+        newUsers.find((u) => u.name === userName).budget =
+            newUsers.find((u) => u.name === userName).budget + price;
+        this.setState({ users: newUsers });
+    };
 
     render() {
         return (
@@ -147,6 +153,7 @@ class App extends Component {
                                 catalog={this.state.catalog}
                                 match={match}
                                 users={this.state.users}
+                                updateBudgetFunc={this.updateBudget}
                             />
                         )}
                     />

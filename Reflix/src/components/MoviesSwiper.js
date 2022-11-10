@@ -17,6 +17,7 @@ class MovieSwiper extends Component {
                             key={m.id}
                             movie={m}
                             user={user}
+                            updateBudgetFunc={this.props.updateBudgetFunc}
                         ></MovieCard>
                     </SwiperSlide>
                 ))}
